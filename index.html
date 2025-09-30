@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catherine Hol - Holistic Arts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #00032c;
+            --bg-darker: #000218;
+            --text-light: #e8e9f3;
+            --text-muted: #a0a5c0;
+            --accent: #4a5fc1;
+            --accent-hover: #5d72d4;
+            --card-bg: rgba(20, 25, 60, 0.6);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 3, 44, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(74, 95, 193, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(rgba(0, 3, 44, 0.7), rgba(0, 3, 44, 0.8)), url('media/img_00.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--accent-hover);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .hero-intro {
+            max-width: 700px;
+            margin: 2rem auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+            font-size: 1rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 95, 193, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            text-align: center;
+            color: var(--accent-hover);
+        }
+
+        section h3 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(74, 95, 193, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin: 1rem 0;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-media {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Video Embed */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: var(--bg-darker);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .testimonial {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            text-align: right;
+            color: var(--accent-hover);
+            font-style: normal;
+        }
+
+        /* Blog */
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .blog-post {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(74, 95, 193, 0.2);
+        }
+
+        .blog-post h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .blog-post img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--accent-hover);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--text-light);
+        }
+
+        /* Links Section */
+        .channel-embed {
+            margin: 2rem 0;
+        }
+
+        .recommendations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .recommendation-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(74, 95, 193, 0.2);
+        }
+
+        .recommendation-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .recommendation-card a {
+            color: var(--accent-hover);
+            text-decoration: none;
+        }
+
+        .recommendation-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Merchandise */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(74, 95, 193, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon {
+            color: var(--accent);
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        /* Legal */
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .legal-content h3 {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .legal-content p {
+            margin: 1rem 0;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(74, 95, 193, 0.2);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(0, 3, 44, 0.98);
+                padding: 4rem 2rem;
+                gap: 2rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Booking Widget Placeholder */
+        .booking-widget {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+            border: 2px dashed var(--accent);
+        }
+
+        .booking-widget p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    
+    <nav>
+        <ul id="navMenu">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#about" onclick="closeMenu()">About</a></li>
+            <li><a href="#services" onclick="closeMenu()">Services</a></li>
+            <li><a href="#blog" onclick="closeMenu()">Blog</a></li>
+            <li><a href="#links" onclick="closeMenu()">Links</a></li>
+            <li><a href="#merchandise" onclick="closeMenu()">Merchandise</a></li>
+            <li><a href="#legal" onclick="closeMenu()">Legal</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Catherine Hol</h1>
+        <h2>Holistic Arts</h2>
+        <div class="hero-intro">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="contact-info">
+            <p>📧 catherine.hol@gmailcom</p>
+        </div>
+        <a href="#services" class="btn">Book an Appointment</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About</h2>
+        <div class="about-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            
+            <div class="about-media">
+                <div class="card">
+                    <img src="media/img_01.png" alt="Catherine Hol">
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="card">
+                    <img src="media/img_02.png" alt="Holistic practice">
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                </div>
+            </div>
+
+           <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/y39PrKY_4JM" allowfullscreen></iframe>
+           </div>
+            
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Services</h2>
+        
+        <h3>Spiritual and Psychic Readings</h3>
+        <div class="content-grid">
+            <div class="card">
+                <img src="media/img_03.png" alt="Psychic readings">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+            </div>
+            <div class="card">
+                <img src="media/img_04.png" alt="Spiritual guidance">
+                <p>Risus commodo viverra maecenas accumsan lacus vel facilisis. Sed vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt.</p>
+            </div>
+        </div>
+        
+        <div class="booking-widget">
+            <p>📅 Schedule Your Reading</p>
+            <a href="#" class="btn">Book Appointment</a>
+        </div>
+
+        <h3>Healing</h3>
+        <div class="content-grid">
+            <div class="card">
+                <img src="media/img_05.png" alt="Energy healing">
+                <p>Nunc sed id semper risus in hendrerit gravida rutrum. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat.</p>
+            </div>
+            <div class="card">
+                <img src="media/img_06.png" alt="Holistic healing">
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec pretium vulputate sapien nec sagittis.</p>
+            </div>
+        </div>
+        
+        <div class="booking-widget">
+            <p>🌟 Schedule Your Healing Session</p>
+            <a href="#" class="btn">Book Appointment</a>
+        </div>
+
+        <h3>Testimonials</h3>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Catherine's guidance was truly transformative and brought clarity to my life's journey."</p>
+                <p class="testimonial-author">— Sarah M.</p>
+            </div>
+            <div class="testimonial">
+                <p>"Excepteur sint occaecat cupidatat non proident. The healing session was profound and I felt an immediate shift in my energy."</p>
+                <p class="testimonial-author">— James P.</p>
+            </div>
+            <div class="testimonial">
+                <p>"Sed do eiusmod tempor incididunt ut labore. Catherine's intuitive abilities are remarkable and her compassion is genuine."</p>
+                <p class="testimonial-author">— Emma T.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <h2>Blog</h2>
+        <div class="blog-posts">
+            <article class="blog-post">
+                <h4>Understanding Your Spiritual Journey</h4>
+                <img src="media/img_07.png" alt="Blog post image">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <div class="social-links">
+                    <a href="#">📺 Watch on YouTube</a>
+                    <a href="#">🐦 Share on Twitter</a>
+                    <a href="#">📘 Share on Facebook</a>
+                </div>
+            </article>
+
+            <article class="blog-post">
+                <h4>The Power of Energy Healing</h4>
+                <img src="media/img_08.png" alt="Blog post image">
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                <div class="social-links">
+                    <a href="#">📺 Watch on YouTube</a>
+                    <a href="#">🐦 Share on Twitter</a>
+                    <a href="#">📘 Share on Facebook</a>
+                </div>
+            </article>
+
+            <article class="blog-post">
+                <h4>Finding Balance in Modern Life</h4>
+                <img src="media/img_09.png" alt="Blog post image">
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                <div class="social-links">
+                    <a href="#">📺 Watch on YouTube</a>
+                    <a href="#">🐦 Share on Twitter</a>
+                    <a href="#">📘 Share on Facebook</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Links Section -->
+    <section id="links">
+        <h2>Links</h2>
+        
+        <h3>Into Intuition</h3>
+        <div class="channel-embed">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/yVE4XXFFO70" allowfullscreen></iframe>
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-muted);">Explore consciousness, spirituality, and the mysteries of existence on the Out of Place channel. Subscribe for weekly insights and discussions.</p>
+        </div>
+
+        <h3>Recommended Resources</h3>
+        <div class="recommendations">
+            <div class="recommendation-card">
+                <h4>Meditation Techniques</h4>
+                <p>A comprehensive guide to various meditation practices.</p>
+                <a href="https://www.youtube.com/watch?v=IOwKfP2LWxk" target="_blank">Watch on YouTube →</a>
+            </div>
+            <div class="recommendation-card">
+                <h4>Filmmaking Intuition</h4>
+                <p>Introduction to the how filmmaking involves intuition.</p>
+                <a href="https://www.youtube.com/shorts/VbwirMvGLOw" target="_blank">Watch on YouTube →</a>
+            </div>
+            <div class="recommendation-card">
+                <h4>Intuitive Development</h4>
+                <p>Enhance your natural psychic abilities with these exercises.</p>
+                <a href="https://www.youtube.com/shorts/HTercWZXZUg" target="_blank">Watch on YouTube →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchandise Section -->
+    <section id="merchandise">
+        <h2>Merchandise</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Digital products and resources to support your spiritual journey</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="media/img_10.png" alt="Product">
+                <h4>Guided Meditation Series</h4>
+                <p>A collection of audio recordings</p>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+            <div class="product-card">
+                <img src="media/img_11.png" alt="Product">
+                <h4>Spiritual Development Course</h4>
+                <p>Comprehensive online course</p>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+            <div class="product-card">
+                <img src="media/img_12.png" alt="Product">
+                <h4>Energy Work Handbook</h4>
+                <p>Digital book with techniques</p>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+            <div class="product-card">
+                <img src="media/img_13.png" alt="Product">
+                <h4>Sacred Photography</h4>
+                <p>High-resolution digital prints</p>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+            <div class="product-card">
+                <img src="media/img_14.png" alt="Product">
+                <h4>Documentary Film</h4>
+                <p>Exploring spiritual awakening</p>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+            <div class="product-card">
+                <img src="media/img_15.png" alt="Product">
+                <h4>Healing Audio Sessions</h4>
+                <p>Downloadable recordings</p>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Section -->
+    <section id="legal">
+        <h2>Legal</h2>
+        <div class="legal-content">
+            <h3>Privacy Policy</h3>
+            <p>This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from this website.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. We collect information you provide directly to us, such as when you book an appointment, subscribe to our newsletter, or contact us for information.</p>
+            
+            <h3>Terms of Service</h3>
+            <p>By accessing this website, you agree to be bound by these Terms of Service and all applicable laws and regulations.</p>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. The materials on this website are provided on an 'as is' basis. We make no warranties, expressed or implied.</p>
+            
+            <h3>Disclaimer</h3>
+            <p>The services provided are for spiritual guidance and holistic wellness purposes. They are not a substitute for professional medical advice, diagnosis, or treatment.</p>
+            <p>Excepteur sint occaecat cupidatat non proident. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+            
+            <h3>Cookie Policy</h3>
+            <p>We use cookies to enhance your experience on our website. Cookies are small text files that are placed on your device to help us provide a better user experience.</p>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur. You can choose to disable cookies through your browser settings, though this may affect functionality.</p>
+            
+            <h3>Copyright Notice</h3>
+            <p>All content on this website, including text, graphics, logos, images, and videos, is the property of Catherine Hol and is protected by copyright laws.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Unauthorized use or reproduction is strictly prohibited.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Catherine Hol - Holistic Arts. All rights reserved.</p>
+        <p style="margin-top: 1rem; color: var(--text-muted);">Spiritual guidance | Energy healing | Intuitive readings</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
